@@ -9,6 +9,15 @@ var $ = (function (el) {
     var element = document.querySelectorAll(el);
     var that = this;
 
+    var returnedObjects = {
+        addClass: addClass,
+        removeClass: removeClass,
+        hasClass: hasClass,
+        each: each,
+        onClick:onClick
+    };
+
+
     /**
      * Add Class to a selected element or elements
      * @param class_to_be_added
@@ -21,7 +30,7 @@ var $ = (function (el) {
                 v.classList.add(class_to_be_added);
             });
         }
-        return that;
+        return returnedObjects;
     }
 
     /**
@@ -36,7 +45,7 @@ var $ = (function (el) {
                 v.classList.remove(class_to_be_removed);
             });
         }
-        return that;
+        return returnedObjects;
     }
 
     /**
@@ -66,14 +75,92 @@ var $ = (function (el) {
     function each(callback) {
         if(element) {
             for(var i = 0; i < element.length; i++) {
-                callback(i, element[i]);
+                if(typeof callback == "function") {
+                    callback(i, element[i]);
+                }
+                
             }
         }
     }
-    return {
-        addClass: addClass,
-        removeClass: removeClass,
-        hasClass: hasClass,
-        each: each
-    };
+
+    /**
+     * Handles click on selected elements
+     * @param callback
+     * @returns {HTMLElement|{addClass: addClass, removeClass: removeClass, hasClass: hasClass, each: each, onClick: onClick}}
+     */
+    function onClick(callback) {
+        if(element) {
+            var pointer = null;
+            for(var i = 0; i < element.length; i++) {
+                pointer = element[i];
+                if(typeof callback == 'function') {
+                    element[i].addEventListener('click', callback);
+                }
+            }
+        }
+        return returnedObjects;
+    }
+
+    return returnedObjects;
 });
+
+var Screen = function (id, title) {
+    this.id = id;
+    this.title = title;
+    this.isVisible = false;
+    this.show = function () {
+        $('.screen').addClass('hide').removeClass('active_screen');
+        $('#' + this.id).removeClass('hide').addClass('active_screen');
+        this.isVisible = true;
+    };
+    this.hide = function () {
+        $('#' + this.id).addClass('hide');
+        this.isVisible = false;
+    }
+};
+
+var ScreenManager = (function () {
+    var __screens = {}, __screenIndexes = [];
+    var __currentIndex = 0;
+
+    function nextScreen() {
+        var selectedIndex = ++__currentIndex;
+        var screen_key = __screenIndexes[selectedIndex];
+        return __screens[screen_key];
+    }
+
+    function previousScreen() {
+        var selectedIndex = --__currentIndex;
+        if(__currentIndex < 0) {return null;}
+        var screen_key = __screenIndexes[selectedIndex];
+        return __screens[screen_key];
+    }
+
+    function goTo(screen_name) {
+        if(screen_name in __screens) {
+            return __screens[screen_name];
+        }
+    }
+
+    function registerScreen(screen, start) {
+        if(!(screen instanceof Screen)) {
+            throw "Instance of Screen needed";
+        }
+        if(screen.id in __screens) {delete __screens[screen.id];}
+        __screens[screen.id] = screen;
+        __screenIndexes.push(screen.id);
+        if(typeof start != 'undefined' && start) {
+            __currentIndex = __screenIndexes.indexOf(screen.id);
+            __screens[screen.id].show();
+        }else {
+            __screens[screen.id].hide();
+        }
+    }
+
+    return {
+        next: nextScreen,
+        prev: previousScreen,
+        goTo: goTo,
+        registerScreen:registerScreen
+    }
+}());
