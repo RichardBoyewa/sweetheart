@@ -1,4 +1,104 @@
 body {
-    font-size: 3em;
     background-color: #ffac71;
+    font-family:sans-serif;
+    font-weight: 100;
+}
+
+.bold_home_text {
+    font-size: 5em;
+}
+
+.world {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top: 0;
+}
+
+.stage {
+    width: 60%;
+    background-color: white;
+    border: solid 1px #d4d4d4;
+    height: 80%;
+    margin-top: 50px;
+    margin-left: 20%;
+    position: relative;
+}
+
+.margin_top_20px {
+    margin-top: 20px;
+}
+
+.margin_top_40px {
+    margin-top: 40px;
+}
+
+.screen {
+    padding: 10%;
+    width: 80%;
+    height: 90%;
+    position: absolute;
+    background-color: white;
+}
+
+.active_screen {
+    z-index: 100;
+}
+
+.hide {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.name_input {
+    font-size: 30px !important;
+}
+
+input[type=text]{
+    border-bottom: solid 1px green;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    font-size: 14px;
+    width: 100%;
+    padding: 20px;
+}
+
+button {
+    min-width: 200px;
+    width: auto;
+    height: 50px;
+    background-color: #ffac71;
+    padding: 10px;
+    color: white;
+    font-size: inherit;
+    border: solid 1px #ff9f5b;
+    cursor: pointer;
+}
+
+@media (max-width: 767px)  {
+    .bold_home_text{
+        font-size: 3em;
+    }
+    .name_input {
+        font-size: inherit !important;
+    }
+    .stage {
+        width: 80%;
+        background-color: white;
+        border: solid 1px #d4d4d4;
+        height: 80%;
+        margin-top: 50px;
+        margin-left: 10%;
+        position: relative;
+    }
+
+    input[type=text], input[type=text]:focus {
+        width: 94%;
+        padding: 3%;
+    }
 }

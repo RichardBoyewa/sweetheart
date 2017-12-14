@@ -1,13 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <meta charset="UTF-8">
     <title>Task 1</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+<div class="world">
+    <div class="stage">
+        <div id="screen1" class="screen ">
+            <div class="text-center">
+                <h1 class="bold_home_text">Shirt Size <br> Generator</h1>
+                <p>
+                    Please enter you name
+                </p>
+            </div>
+            <div class="text-center">
+                <input class="name_input" type="text" placeholder="Full Name">
+            </div>
+            <div class="text-center margin_top_40px">
+                <button class="screen_control" data-next="screen2">Next</button>
+            </div>
 
+        </div>
+        <div id="screen2" class="screen">
+            <div class="text-center">
+                Hello I am Richard 2
+            </div>
+            <div class="text-center margin_top_40px">
+                <button class="screen_control" data-next="screen1">Prev 1</button>
+                <button class="screen_control" data-next="screen3">Next 2</button>
+            </div>
+
+        </div>
+        <div id="screen3" class="screen">
+            <div class="text-center">
+                Hello I am Richard 3
+            </div>
+            <div class="text-center margin_top_40px">
+                <button class="screen_control" data-next="screen2">Prev 2</button>
+                <button class="screen_control" data-next="screen4">Next 3</button>
+            </div>
+
+        </div>
+        <div id="screen4" class="screen">
+            <div class="text-center">
+                Hello I am Richard 4
+            </div>
+            <div class="text-center margin_top_40px">
+                <button class="screen_control" data-next="screen3">Prev 3</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript" src="js/elQuery.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
