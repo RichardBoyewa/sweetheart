@@ -5,7 +5,7 @@ body {
 }
 
 .bold_home_text {
-    font-size: 5em;
+    font-size: 4em;
 }
 
 .world {
@@ -80,17 +80,18 @@ body {
     width: 40%;
     background-color: #ffac71;
     height: 12px;
+    padding-left: 23px;
+    border-radius: 10px;
 }
 
 .slider_knob {
     width: 25px;
     height: 25px;
-    margin-left: 0px;
     margin-top: -8px;
+    float: right;
     border-radius: 12px;
     background-color: #fdf3ec;
     border: solid 1px grey;
-    position: absolute;
     transition: all 0.2s ease;
     cursor: move;
 }
@@ -127,6 +128,16 @@ body {
     display: flex;
 }
 
+.right_text{
+    float: right;
+}
+
+.success {
+    color: #5f9a5f;
+    font-size: 3em;
+    font-weight: 100;
+}
+
 input[type=radio]:not(:checked) + label {
     background-color: #ffffff;
 }
@@ -143,10 +154,11 @@ input[type=text]{
     font-size: 14px;
     width: 94%;
     padding: 3%;
+    text-align: center;
 }
 
 button {
-    min-width: 200px;
+    min-width: 150px;
     width: auto;
     height: 50px;
     background-color: #ffac71;
@@ -155,6 +167,13 @@ button {
     font-size: inherit;
     border: solid 1px #ff9f5b;
     cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    font-size: 13px;
+    padding: 10px;
+    border: solid 1px darkgray;
 }
 
 @media (max-width: 767px)  {
@@ -194,4 +213,18 @@ button {
     button {
         min-width: 110px;
     }
+
+    .hidden_range {
+        height: 10px;
+        width: 77%;
+    }
+}
+
+/** Hide Range **/
+.hidden_range {
+    position: absolute;
+    width: 77%;
+    margin-top: -4px;
+    height: 20px;
+    opacity: 0;
 }
