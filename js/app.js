@@ -12,7 +12,7 @@ var Visitor = function () {
     this.measurement = {
         neck:0.00,
         sleeve:0.00,
-        check:0.00,
         collarType: CollarType.NORMAL_COLLAR
-    }
+    };
+    this.deliveryAddress = '';
 };

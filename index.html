@@ -8,11 +8,12 @@
 </head>
 <body>
 <div class="world">
-    <form action="" method="post">
+    <form name="shirtMaker" id="shirtMaker" action="" target="_blank" onsubmit="handleSubmit(event); return false;" method="post">
         <div class="stage">
             <div id="screen1" class="screen ">
                 <div class="text-center">
-                    <h1 class="bold_home_text">Shirt Size <br> Generator</h1>
+                    <h1 class="bold_home_text">Shirt Maker's <br> Hub </h1>
+                    <p>We make your shirt and deliver it to your doorstep.</p>
                     <p>
                         Please enter you name
                     </p>
@@ -29,23 +30,27 @@
                 <div class="">
                     <div class="section">
 
-                        <input name="neck_size" id="neck_size" class="hide" type="range">
                         <div class="field_label">
-                            <label for="neck_size">Neck Size</label>
+                            <label for="slider1_range">Neck Size</label>
+                            <label id="neck_value" class="right_text">40cm</label>
                         </div>
-                        <div class="field slider_wrapper">
-                            <div class="slider_knob"></div>
-                            <div class="slider_rail"></div>
+                        <div id="slider1" class="field slider_wrapper">
+                            <input max="100" min="0" value="40" name="slider1_range" id="slider1_range" class="hidden_range" type="range">
+                            <div class="slider_rail">
+                                <div class="slider_knob"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="section">
-                        <input name="sleeve_size" id="sleeve_size" class="hide" type="range">
                         <div class="field_label">
-                            <label for="sleeve_size">Sleeve Size</label>
+                            <label for="slider2_range">Sleeve Size</label>
+                            <label id="sleeve_value" class="right_text">40cm</label>
                         </div>
-                        <div class="field slider_wrapper">
-                            <div class="slider_knob"></div>
-                            <div class="slider_rail"></div>
+                        <div  id="slider2" class="field slider_wrapper">
+                            <input max="100" min="0" value="40" name="slider2_range" id="slider2_range" class="hidden_range" type="range">
+                            <div class="slider_rail">
+                                <div class="slider_knob"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="section">
@@ -70,27 +75,36 @@
                     </div>
                 </div>
                 <div class="text-center margin_top_40px">
-                    <button type="button" class="screen_control" data-next="screen1">Prev 1</button>
-                    <button type="button" class="screen_control" data-next="screen3">Next 2</button>
+                    <button type="button" class="screen_control" data-next="screen1">Prev </button>
+                    <button type="button" class="screen_control" data-next="screen3">Next </button>
                 </div>
 
             </div>
             <div id="screen3" class="screen">
-                <div class="text-center">
-                    Hello I am Richard 3
+                <div class="">
+                    <div class="section">
+                        <div class="field_label">
+                            <label>Delivery Address</label>
+                        </div>
+                        <div class="radio_bar_wrapper margin_top_20px">
+                            <textarea name="delivery_address" rows="5"></textarea>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="text-center margin_top_40px">
-                    <button type="button" class="screen_control" data-next="screen2">Prev 2</button>
-                    <button type="button" class="screen_control" data-next="screen4">Next 3</button>
+                    <button type="button" class="screen_control" data-next="screen2">Prev</button>
+                    <button type="submit" class="screen_control" data-next="screen4">Next</button>
                 </div>
 
             </div>
             <div id="screen4" class="screen">
                 <div class="text-center">
-                    Hello I am Richard 4
+                    <h1 class="success">Successful</h1>
+                    <p> Thanks <span id="visitor_name_literal"></span>, Your shirt is on its way to you.</p>
                 </div>
                 <div class="text-center margin_top_40px">
-                    <button type="button" class="screen_control" data-next="screen3">Prev 3</button>
+                    <button type="reset" class="screen_control" data-next="screen1">Restart</button>
                 </div>
             </div>
         </div>

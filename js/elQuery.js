@@ -14,7 +14,12 @@ var $ = (function (el) {
         removeClass: removeClass,
         hasClass: hasClass,
         each: each,
-        onClick:onClick
+        onClick:onClick,
+        addAttr: addAttr,
+        on:on,
+        setStyle:setStyle,
+        domNode:element,
+        setText:setText
     };
 
 
@@ -49,6 +54,42 @@ var $ = (function (el) {
     }
 
     /**
+     * Add attribute to a UI element
+     * @param key
+     * @param attr
+     * @returns {HTMLElement|{addClass: addClass, removeClass: removeClass, hasClass: hasClass, each: each, onClick: onClick, addAttr: addAttr}}
+     */
+    function addAttr(key,attr) {
+        if(element) {
+            each(function (i, v) {
+                v.setAttribute(key, attr);
+            });
+        }
+        return returnedObjects;
+    }
+
+    /**
+     * DOM event map
+     * @param event
+     * @param handler
+     * @returns {HTMLElement|{addClass: addClass, removeClass: removeClass, hasClass: hasClass, each: each, onClick: onClick, addAttr: addAttr, on: on}}
+     */
+    function on(event, handler) {
+        if(element) {
+            each(function (i, v) {
+                v.addEventListener(event, handler);
+            });
+        }
+        return returnedObjects;
+    }
+
+    function setStyle(style_property, value) {
+        each(function (i, v) {
+            v.style[style_property] = value;
+        });
+    }
+
+    /**
      * Return true when at least one instance of the class is found on the selected
      * Elements
      * @param _class
@@ -79,6 +120,18 @@ var $ = (function (el) {
                     callback(i, element[i]);
                 }
                 
+            }
+        }
+    }
+
+    /**
+     * Set innerText of a DOM element
+     * @param text
+     */
+    function setText(text) {
+        if(element) {
+            for(var i = 0; i < element.length; i++) {
+                element[i].innerHTML = text ;
             }
         }
     }
@@ -164,3 +217,20 @@ var ScreenManager = (function () {
         registerScreen:registerScreen
     }
 }());
+
+var DraggableSlider = function (el, config) {
+    var element = $(el);
+    //ToDo Check if range exist. If not create one and append it to the parent
+    var slider_range = $(el + '_range');
+    if(element) {
+        var rail = element.domNode[0].querySelector('.slider_rail');
+        if(slider_range) {
+            slider_range.on('input', function (event) {
+                rail.style.width = event.target.value +'%';
+                if(typeof config.onChange == 'function') {
+                    config.onChange.call(this, event.target.value);
+                }
+            });
+        }
+    }
+};
