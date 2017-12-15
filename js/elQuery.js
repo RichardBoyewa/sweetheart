@@ -109,12 +109,12 @@ var Screen = function (id, title) {
     this.title = title;
     this.isVisible = false;
     this.show = function () {
-        $('.screen').addClass('hide').removeClass('active_screen');
-        $('#' + this.id).removeClass('hide').addClass('active_screen');
+        $('.screen').removeClass('active_screen');
+        $('#' + this.id).addClass('active_screen');
         this.isVisible = true;
     };
     this.hide = function () {
-        $('#' + this.id).addClass('hide');
+        $('#' + this.id).removeClass('active_screen');
         this.isVisible = false;
     }
 };

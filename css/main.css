@@ -1,5 +1,5 @@
 body {
-    background-color: #ffac71;
+    background: linear-gradient(-90deg, #f78433, #efb670);
     font-family:sans-serif;
     font-weight: 100;
 }
@@ -18,8 +18,6 @@ body {
 
 .stage {
     width: 60%;
-    background-color: white;
-    border: solid 1px #d4d4d4;
     height: 80%;
     margin-top: 50px;
     margin-left: 20%;
@@ -37,13 +35,16 @@ body {
 .screen {
     padding: 10%;
     width: 80%;
-    height: 90%;
+    margin-left: -4000px;
     position: absolute;
     background-color: white;
+    transition: all 1s ease;
+    z-index: 1;
 }
 
 .active_screen {
     z-index: 100;
+    margin-left: 0px;
 }
 
 .hide {
@@ -58,14 +59,90 @@ body {
     font-size: 30px !important;
 }
 
+.section {
+    border-bottom: 1px solid darkgrey;
+    padding: 20px;
+    min-height: 60px;
+}
+
+/* Slider */
+.slider_wrapper {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid darkgray;
+}
+
+.field {
+    margin-top: 20px;
+}
+
+.slider_rail {
+    width: 40%;
+    background-color: #ffac71;
+    height: 12px;
+}
+
+.slider_knob {
+    width: 25px;
+    height: 25px;
+    margin-left: 0px;
+    margin-top: -8px;
+    border-radius: 12px;
+    background-color: #fdf3ec;
+    border: solid 1px grey;
+    position: absolute;
+    transition: all 0.2s ease;
+    cursor: move;
+}
+
+.slider_knob:hover {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    margin-top: -10px;
+}
+
+.radio_bar {
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    border: solid 1px #ffac71;
+    display: inline-block;
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.radio_bar > img {
+    height: 80%;
+    transition: all 0.4s ease;
+    margin-top: 7px;
+}
+
+.radio_bar > img:hover {
+    height: 92%;
+}
+
+.radio_bar_wrapper {
+    display: flex;
+}
+
+input[type=radio]:not(:checked) + label {
+    background-color: #ffffff;
+}
+input[type=radio]:checked + label {
+    background-color: #ffac71;
+}
+
+
 input[type=text]{
     border-bottom: solid 1px green;
     border-right: none;
     border-left: none;
     border-top: none;
     font-size: 14px;
-    width: 100%;
-    padding: 20px;
+    width: 94%;
+    padding: 3%;
 }
 
 button {
@@ -81,6 +158,15 @@ button {
 }
 
 @media (max-width: 767px)  {
+    .radio_bar > img:hover {
+        height: 80%;
+    }
+    .radio_bar_wrapper {
+        display: inline-block;
+    }
+    .radio_bar {
+        margin-top: 4px;
+    }
     .bold_home_text{
         font-size: 3em;
     }
@@ -88,17 +174,24 @@ button {
         font-size: inherit !important;
     }
     .stage {
-        width: 80%;
-        background-color: white;
-        border: solid 1px #d4d4d4;
+        width: 92%;
         height: 80%;
-        margin-top: 50px;
-        margin-left: 10%;
+        margin-top: 5px;
+        margin-left: 4%;
         position: relative;
+    }
+    .section {
+        border-bottom: 1px solid darkgrey;
+        padding: 5px;
+        min-height: 60px;
     }
 
     input[type=text], input[type=text]:focus {
         width: 94%;
         padding: 3%;
+    }
+
+    button {
+        min-width: 110px;
     }
 }

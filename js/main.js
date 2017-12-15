@@ -1,7 +1,9 @@
 /**
  * Created by akin.akindolani on 12/14/17.
  */
+
 window.onload = function () {
+    var visitor = new Visitor();
     var screen1 = new Screen('screen1', "Intro Screen");
     var screen2 = new Screen('screen2', "Size collection Screen");
     var screen3 = new Screen('screen3', "Delivery Option");

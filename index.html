@@ -8,54 +8,98 @@
 </head>
 <body>
 <div class="world">
-    <div class="stage">
-        <div id="screen1" class="screen ">
-            <div class="text-center">
-                <h1 class="bold_home_text">Shirt Size <br> Generator</h1>
-                <p>
-                    Please enter you name
-                </p>
-            </div>
-            <div class="text-center">
-                <input class="name_input" type="text" placeholder="Full Name">
-            </div>
-            <div class="text-center margin_top_40px">
-                <button class="screen_control" data-next="screen2">Next</button>
-            </div>
+    <form action="" method="post">
+        <div class="stage">
+            <div id="screen1" class="screen ">
+                <div class="text-center">
+                    <h1 class="bold_home_text">Shirt Size <br> Generator</h1>
+                    <p>
+                        Please enter you name
+                    </p>
+                </div>
+                <div class="text-center">
+                    <input class="name_input" name="visitor_name" type="text" placeholder="Full Name">
+                </div>
+                <div class="text-center margin_top_40px">
+                    <button type="button" class="screen_control" data-next="screen2">Next</button>
+                </div>
 
-        </div>
-        <div id="screen2" class="screen">
-            <div class="text-center">
-                Hello I am Richard 2
             </div>
-            <div class="text-center margin_top_40px">
-                <button class="screen_control" data-next="screen1">Prev 1</button>
-                <button class="screen_control" data-next="screen3">Next 2</button>
-            </div>
+            <div id="screen2" class="screen">
+                <div class="">
+                    <div class="section">
 
-        </div>
-        <div id="screen3" class="screen">
-            <div class="text-center">
-                Hello I am Richard 3
-            </div>
-            <div class="text-center margin_top_40px">
-                <button class="screen_control" data-next="screen2">Prev 2</button>
-                <button class="screen_control" data-next="screen4">Next 3</button>
-            </div>
+                        <input name="neck_size" id="neck_size" class="hide" type="range">
+                        <div class="field_label">
+                            <label for="neck_size">Neck Size</label>
+                        </div>
+                        <div class="field slider_wrapper">
+                            <div class="slider_knob"></div>
+                            <div class="slider_rail"></div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <input name="sleeve_size" id="sleeve_size" class="hide" type="range">
+                        <div class="field_label">
+                            <label for="sleeve_size">Sleeve Size</label>
+                        </div>
+                        <div class="field slider_wrapper">
+                            <div class="slider_knob"></div>
+                            <div class="slider_rail"></div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="field_label">
+                            <label>Collar Type</label>
+                        </div>
+                        <div class="radio_bar_wrapper margin_top_20px">
+                            <input type="radio" name="collar_type" id="long_french" value="long_french" class="hide">
+                            <label class="radio_bar" for="long_french">
+                                <img src="img/type1.jpg" alt="">
+                            </label>
+                            <input type="radio" name="collar_type" id="short_french" value="short_french" class="hide">
+                            <label class="radio_bar" for="short_french">
+                                <img src="img/type2.jpeg" alt="">
+                            </label>
+                            <input type="radio" name="collar_type" id="normal_collar" value="normal_collar" class="hide">
+                            <label class="radio_bar" for="normal_collar">
+                                <img src="img/type3.png" alt="">
+                            </label>
+                        </div>
 
-        </div>
-        <div id="screen4" class="screen">
-            <div class="text-center">
-                Hello I am Richard 4
+                    </div>
+                </div>
+                <div class="text-center margin_top_40px">
+                    <button type="button" class="screen_control" data-next="screen1">Prev 1</button>
+                    <button type="button" class="screen_control" data-next="screen3">Next 2</button>
+                </div>
+
             </div>
-            <div class="text-center margin_top_40px">
-                <button class="screen_control" data-next="screen3">Prev 3</button>
+            <div id="screen3" class="screen">
+                <div class="text-center">
+                    Hello I am Richard 3
+                </div>
+                <div class="text-center margin_top_40px">
+                    <button type="button" class="screen_control" data-next="screen2">Prev 2</button>
+                    <button type="button" class="screen_control" data-next="screen4">Next 3</button>
+                </div>
+
+            </div>
+            <div id="screen4" class="screen">
+                <div class="text-center">
+                    Hello I am Richard 4
+                </div>
+                <div class="text-center margin_top_40px">
+                    <button type="button" class="screen_control" data-next="screen3">Prev 3</button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
+
 </div>
 
 <script type="text/javascript" src="js/elQuery.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
